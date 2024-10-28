@@ -10,12 +10,13 @@ public class ThirdPerson : MonoBehaviour
 
 
     private float velocidadRotacion;
-
+    private Animator anim;
 
     void Start()
     {
         //obtenemos una vez el componente character controller, y lo almacenamos en una variable de tipo character controller
         characterController = GetComponent<CharacterController>();
+        anim = GetComponent<Animator>();
     }
 
 
@@ -52,6 +53,13 @@ public class ThirdPerson : MonoBehaviour
             //como no va por físicas, tendremos que multiplicarlo por Time.deltaTime
             characterController.Move(movimiento * velocidadMovimiento * Time.deltaTime);
 
+            //para que el muñeco cambie su animacion a andar/walking
+            anim.SetBool("Walking", true);
+        }else 
+        { 
+            
+            anim.SetBool("Walking", false); 
+        
         }
 
     }

@@ -6,7 +6,14 @@ public class FirstPerson : MonoBehaviour
 {
 
     [SerializeField] private float velocidadMovimiento;
+    [SerializeField] private float factorGravedad;
+    [SerializeField] private float radioDeteccion;
+    //para obtener unicamente el componente transform del gameobject pies de manera directa
+    [SerializeField] private Transform pies;
     CharacterController characterController;
+    private Vector3 movimientoVertical;
+    [SerializeField] private LayerMask queEsSuelo;
+
     
     
     void Start()
@@ -19,6 +26,8 @@ public class FirstPerson : MonoBehaviour
     void Update()
     {
         MoverYRotar();
+        AplicarGravedad();
+        DetectarSuelo();
     }
 
     void MoverYRotar()
@@ -48,6 +57,20 @@ public class FirstPerson : MonoBehaviour
             characterController.Move(movimiento * velocidadMovimiento * Time.deltaTime);
 
         }
-       
+    }
+
+    private void AplicarGravedad()
+    {
+        //mi velocidadVertical, va en aumento a cierto factor por segundo.
+        //se multiplica 2 veces por delta porque la operacion de la gravedad es m/s2 (al cuadrado)
+        movimientoVertical.y += factorGravedad * Time.deltaTime;
+        characterController.Move(movimientoVertical * Time.deltaTime);
+    }
+
+    private bool DetectarSuelo()
+    {
+        //crear un esfera de deteccion en los pies con cierto radio.
+        bool enSuelo = Physics.CheckSphere(pies.position, radioDeteccion, queEsSuelo);
+        return enSuelo;
     }
 }

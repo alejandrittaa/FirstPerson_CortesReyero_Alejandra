@@ -4,18 +4,20 @@ using UnityEngine;
 
 public class FirstPerson : MonoBehaviour
 {
-
+    [Header("Movimiento")]
     [SerializeField] private float velocidadMovimiento;
     [SerializeField] private float factorGravedad;
-    [SerializeField] private float radioDeteccion;
-    //para obtener unicamente el componente transform del gameobject pies de manera directa
-    [SerializeField] private Transform pies;
     CharacterController characterController;
+
+    [Header("Deteccion de suelo")]
+    [SerializeField] private float radioDeteccion;
     private Vector3 movimientoVertical;
     [SerializeField] private LayerMask queEsSuelo;
+    //para obtener unicamente el componente transform del gameobject pies de manera directa
+    [SerializeField] private Transform pies;
 
-    
-    
+
+
     void Start()
     {
         //obtenemos una vez el componente character controller, y lo almacenamos en una variable de tipo character controller

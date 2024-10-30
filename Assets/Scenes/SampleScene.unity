@@ -998,12 +998,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocidadMovimiento: 5
-  factorGravedad: 9.8
+  factorGravedad: -9.8
   radioDeteccion: 0
-  pies: {fileID: 580296974}
   queEsSuelo:
     serializedVersion: 2
     m_Bits: 8
+  pies: {fileID: 580296974}
 --- !u!1 &1817617823
 GameObject:
   m_ObjectHideFlags: 0

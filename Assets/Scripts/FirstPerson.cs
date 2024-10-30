@@ -30,6 +30,12 @@ public class FirstPerson : MonoBehaviour
         MoverYRotar();
         AplicarGravedad();
         DetectarSuelo();
+
+        if(DetectarSuelo())
+        {
+            //cada vez que caigamos al suelo, cancelamos la gravedad
+            movimientoVertical.y = 0;
+        }
     }
 
     void MoverYRotar()
@@ -75,4 +81,13 @@ public class FirstPerson : MonoBehaviour
         bool enSuelo = Physics.CheckSphere(pies.position, radioDeteccion, queEsSuelo);
         return enSuelo;
     }
+
+    //hacemos esto para poder ver la bola dibujada y saber que esta haciendo
+    private void OnDrawGizmos()
+    {   
+        Gizmos.color = Color.red;
+        //si ponemos DrawWireSphere, saldra solo lineas formando una esfera.
+        Gizmos.DrawWireSphere(pies.position, radioDeteccion);
+    }
+
 }

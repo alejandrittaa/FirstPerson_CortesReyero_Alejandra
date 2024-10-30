@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,7 @@ public class FirstPerson : MonoBehaviour
     [SerializeField] private float velocidadMovimiento;
     [SerializeField] private float factorGravedad;
     CharacterController characterController;
+    [SerializeField] private float alturaSalto;
 
     [Header("Deteccion de suelo")]
     [SerializeField] private float radioDeteccion;
@@ -35,7 +37,18 @@ public class FirstPerson : MonoBehaviour
         {
             //cada vez que caigamos al suelo, cancelamos la gravedad
             movimientoVertical.y = 0;
+            Saltar();
         }
+    }
+
+    private void Saltar()
+    {
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            //aplicamos formula de salto para saltar la alto de alturasalto
+            movimientoVertical.y = Mathf.Sqrt(-2 * factorGravedad * alturaSalto);
+        }
+
     }
 
     void MoverYRotar()

@@ -65,6 +65,8 @@ public class FirstPerson : MonoBehaviour
         //para que mi cuerpo quede orientado hacia donde me muevo
         transform.eulerAngles = new Vector3(0, anguloRotacion, 0);
 
+        //roto el cuerpo a la vez que la cabeza
+        transform.rotation = Quaternion.Euler(0, Camera.main.transform.eulerAngles.y, 0);
 
         //si la magnitud/tamaño del vector es mayor de 0, si es positiva. 
         if (input.magnitude > 0)

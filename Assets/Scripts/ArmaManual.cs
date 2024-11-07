@@ -26,6 +26,14 @@ public class ArmaManual : MonoBehaviour
                 //el hitinfo solo tiene información del impacto
                 //esta sentencia solo sirve para mostrar el nombre de en lo que ha impactado
                 Debug.Log(hitInfo.transform.name);
+
+                //para que no de null reference si disparas a cualquier cosa que no sea el enemigo.
+                if (hitInfo.transform.CompareTag("ParteEnemigo"))
+                {
+                    //para contactar con el enemigo al que le hemos impactado
+                    hitInfo.transform.GetComponent<Enemigo>().RecibirDanho(misDatos.danhoAtaque);
+                }
+
             }
         }
     }

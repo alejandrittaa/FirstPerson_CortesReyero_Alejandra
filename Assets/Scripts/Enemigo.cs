@@ -44,15 +44,6 @@ public class Enemigo : MonoBehaviour
         } 
     }
 
-    public void RecibirDanho(float danhoRecibido)
-    {
-        vidas -= danhoRecibido;
-        if(vidas <= 0)
-        {
-            //cuando escribimos game object en miniscula para que se destruya asi mismo. el this. no es necesario pero nos deja mas claro que es a si mismo.
-            //Destroy(this.gameObject);
-            cambiarEstadoHuesos(false);
-        }
-    }
+
 
 }

@@ -44,6 +44,9 @@ public class Enemigo : MonoBehaviour
         } 
     }
 
-
+    public void RecibirDanho(float enemigo)
+    {
+            
+    }
 
 }
